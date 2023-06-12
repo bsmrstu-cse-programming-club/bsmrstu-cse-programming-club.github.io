@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+.headline-1 {
+  font-family: "Poppins", "sans-serif";
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 0.9px;
+  line-height: 24px;
+}
+.headline-2 {
+  font-family: "Poppins", "sans-serif";
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.7px;
+  line-height: 20px;
+}
+
+.headline-3 {
+  font-family: "Poppins", "sans-serif";
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.6px;
+  line-height: 18px;
+}
+.headline-4 {
+  font-family: "Poppins", "sans-serif";
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  line-height: 16px;
+}
+.headline-5 {
+  font-family: "Poppins", "sans-serif";
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  line-height: 14px;
+}
+.headline-6 {
+  font-family: "Poppins", "sans-serif";
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  line-height: 12px;
+}
