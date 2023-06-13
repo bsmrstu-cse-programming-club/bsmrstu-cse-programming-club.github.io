@@ -4,28 +4,35 @@ import { BasicComponent } from './components/basic/basic.component';
 import { ModerateComponent } from './components/moderate/moderate.component';
 import { AdvanceComponent } from './components/advance/advance.component';
 import { AdditionalResourcesComponent } from './components/additional-resources/additional-resources.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 const routes: Routes = [
   {
-    path: 'basic',
-    component: BasicComponent,
-  },
-  {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'basic',
-  },
-  {
-    path: 'moderate',
-    component: ModerateComponent,
-  },
-  {
-    path: 'advance',
-    component: AdvanceComponent,
-  },
-  {
-    path: 'resources',
-    component: AdditionalResourcesComponent,
+    component: SidenavComponent,
+    children: [
+      {
+        path: 'basic',
+        component: BasicComponent,
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'basic',
+      },
+      {
+        path: 'moderate',
+        component: ModerateComponent,
+      },
+      {
+        path: 'advance',
+        component: AdvanceComponent,
+      },
+      {
+        path: 'resources',
+        component: AdditionalResourcesComponent,
+      },
+    ],
   },
 ];
 

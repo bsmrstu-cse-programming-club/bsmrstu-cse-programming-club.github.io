@@ -8,7 +8,12 @@
     <span class="headline-2">BSMRSTU Programming Club</span>
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
       <ng-container *ngFor="let option of navigations; let lastElement = last">
-        <a routerLink="{{ option.url }}" class="link">{{ option.title }}</a>
+        <a
+          routerLink="{{ option.url }}"
+          class="link"
+          [ngClass]="{ isActive: option.isActive }"
+          >{{ option.title }}</a
+        >
         <span *ngIf="!lastElement" class="divider"></span>
       </ng-container>
     </div>
