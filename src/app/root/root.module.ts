@@ -6,12 +6,14 @@ import { RootDefaultComponent } from './components/root-default/root-default.com
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [RootDefaultComponent],
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     RootRoutingModule,
     MatToolbarModule,
     FlexModule,

@@ -2,43 +2,44 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root-default',
-  templateUrl: './root-default.component.html',
-  styleUrls: ['./root-default.component.scss'],
+  selector: 'app-sidenav',
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.scss'],
 })
-export class RootDefaultComponent {
+export class SidenavComponent {
   navigations = [
     {
-      title: 'Syllabus',
-      url: '/syllabus',
-      name: 'syllabus',
+      title: 'Basic',
+      url: '',
+      name: 'basic',
       isActive: true,
     },
     {
-      title: 'Hosted Contests',
-      url: '/contests',
-      name: 'contests',
+      title: 'Moderate',
+      url: '/syllabus/moderate',
+      name: 'moderate',
       isActive: false,
     },
     {
-      title: 'Members',
-      url: '/members',
-      name: 'contests',
+      title: 'Advance',
+      url: '/syllabus/advance',
+      name: 'advance',
       isActive: false,
     },
     {
-      title: 'Achievments',
-      url: '/achievments',
-      name: 'achievments',
+      title: 'Additional Resources',
+      url: '/syllabus/resources',
+      name: 'resources',
       isActive: false,
     },
   ];
+
   constructor(private router: Router) {
     router.events.subscribe((route) => {
       if (route instanceof NavigationEnd) {
         const url = route.url.split('/');
         for (const navigation of this.navigations) {
-          navigation.isActive = navigation.name === url[1];
+          navigation.isActive = navigation.name === url[url.length - 1];
         }
         const isUpdated = this.navigations.filter(
           (value) => value.isActive === true

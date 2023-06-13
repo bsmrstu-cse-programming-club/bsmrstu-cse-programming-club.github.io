@@ -1,0 +1,13 @@
+<div fxlayout="row">
+    <div fxLayout="row" fxLayout.lt-sm="column" fxFlex.lt-sm="100%" fxLayoutAlign="start start">
+        <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="16%" class="sidenav">
+            <ng-container *ngFor="let option of navigations">
+                <a routerLink="{{ option.url }}" class="link" [ngClass]="{ isActive: option.isActive }">{{ option.title }}</a>
+                <mat-divider class="divider"></mat-divider>
+            </ng-container>
+        </div>
+        <div fxFlex="84%" class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

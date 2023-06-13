@@ -1,22 +1,269 @@
-<div fxlayout="row">
-  <div
-    fxLayout="row"
-    fxLayout.lt-sm="column"
-    fxFlex.lt-sm="100%"
-    fxLayoutAlign="start start"
-    fxLayoutGap="12px"
-  >
-    <div
-      fxLayout="column"
-      fxLayoutAlign="start stretch"
-      fxFlex="16%"
-      class="sidenav"
-    >
-      <ng-container *ngFor="let option of navigations">
-        <a routerLink="{{ option.url }}" class="link">{{ option.title }}</a>
-        <mat-divider class="divider"></mat-divider>
-      </ng-container>
+<div class="p-20" fxLayout="column" fxLayoutGap="20px">
+    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" class="mat-elevation-z4 p-20">
+        <div class="header w-100-p" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                <mat-icon color="primary">hub</mat-icon>
+                <span class="headline-3">Complexity Analysis & STL(C++)</span>
+            </div>
+            <div fxLayoutGap="12px">
+                <button
+                    color="primary"
+                    mat-mini-fab
+                    aria-labelledby="expand all accordion"
+                    matTooltip="expand all section"
+                    (click)="accordion.openAll()"
+                >
+                    <mat-icon>unfold_more</mat-icon>
+                </button>
+                <button
+                    color="accent"
+                    mat-mini-fab
+                    aria-labelledby="collapse all accordion"
+                    matTooltip="collapse all section"
+                    (click)="accordion.closeAll()"
+                >
+                    <mat-icon>unfold_less</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="content" class="w-100-p">
+            <mat-accordion multi="true">
+                <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
+                    <mat-expansion-panel fxFlex="100">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="headline-4">Asymptotic analysis (Big-O notation)</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="expansion-body">
+                            <mat-accordion multi="true">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="headline-5">Resources</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <ng-template matExpansionPanelContent>
+                                        <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px">
+                                            <ng-container *ngFor="let resource of complexityResources; let i = index">
+                                                <div
+                                                    fxLayout="row"
+                                                    fxLayoutAlign="start center"
+                                                    fxLayoutGap="20px"
+                                                    class="mat-elevation-z2 p-12 pr-4 w-100-p"
+                                                >
+                                                    <span>{{ i }}.</span>
+                                                    <mat-icon *ngIf="resource.type === 'video'" color="primary"
+                                                        >switch_video</mat-icon
+                                                    >
+                                                    <mat-icon *ngIf="resource.type !== 'video'" color="primary"
+                                                        >description</mat-icon
+                                                    >
+                                                    <a href="{{ resource.url }}" target="_blank">{{ resource.title }}</a>
+                                                    <mat-icon color="primary" class="ml-auto">open_in_new</mat-icon>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </ng-template>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel class="mt-8">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="headline-5">Problems</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel fxFlex="100">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="headline-4">Standard Template Library (C++)</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="expansion-body">
+                            <mat-accordion multi="true">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="headline-5">Resources</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <ng-template matExpansionPanelContent>
+                                        <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px">
+                                            <ng-container *ngFor="let resource of stlResources; let i = index">
+                                                <div
+                                                    fxLayout="row"
+                                                    fxLayoutAlign="start center"
+                                                    fxLayoutGap="20px"
+                                                    class="mat-elevation-z2 p-12 pr-4 w-100-p"
+                                                >
+                                                    <span class="w-20">{{ i }}.</span>
+                                                    <mat-icon *ngIf="resource.type === 'video'" color="primary"
+                                                        >switch_video</mat-icon
+                                                    >
+                                                    <mat-icon *ngIf="resource.type !== 'video'" color="primary"
+                                                        >description</mat-icon
+                                                    >
+                                                    <a href="{{ resource.url }}" target="_blank">{{ resource.title }}</a>
+                                                    <mat-icon color="primary" class="ml-auto">open_in_new</mat-icon>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </ng-template>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel class="mt-8">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Problems</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </mat-expansion-panel>
+                </div>
+            </mat-accordion>
+        </div>
     </div>
-    <div></div>
-  </div>
+    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" class="mat-elevation-z4 p-20">
+        <div class="header w-100-p" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                <mat-icon color="primary">hub</mat-icon>
+                <span class="headline-3">Complexity Analysis & STL(C++)</span>
+            </div>
+            <div fxLayoutGap="12px">
+                <button
+                    color="primary"
+                    mat-mini-fab
+                    aria-labelledby="expand all accordion"
+                    matTooltip="expand all section"
+                    (click)="accordion.openAll()"
+                >
+                    <mat-icon>unfold_more</mat-icon>
+                </button>
+                <button
+                    color="accent"
+                    mat-mini-fab
+                    aria-labelledby="collapse all accordion"
+                    matTooltip="collapse all section"
+                    (click)="accordion.closeAll()"
+                >
+                    <mat-icon>unfold_less</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="content" class="w-100-p">
+            <mat-accordion multi="true">
+                <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
+                    <mat-expansion-panel fxFlex="100">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="headline-4">Asymptotic analysis (Big-O notation)</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="expansion-body">
+                            <mat-accordion multi="true">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="headline-5">Resources</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <ng-template matExpansionPanelContent>
+                                        <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px">
+                                            <ng-container *ngFor="let resource of complexityResources; let i = index">
+                                                <div
+                                                    fxLayout="row"
+                                                    fxLayoutAlign="start center"
+                                                    fxLayoutGap="20px"
+                                                    class="mat-elevation-z2 p-12 pr-4 w-100-p"
+                                                >
+                                                    <span>{{ i }}.</span>
+                                                    <mat-icon *ngIf="resource.type === 'video'" color="primary"
+                                                        >switch_video</mat-icon
+                                                    >
+                                                    <mat-icon *ngIf="resource.type !== 'video'" color="primary"
+                                                        >description</mat-icon
+                                                    >
+                                                    <a href="{{ resource.url }}" target="_blank">{{ resource.title }}</a>
+                                                    <mat-icon color="primary" class="ml-auto">open_in_new</mat-icon>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </ng-template>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel class="mt-8">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="headline-5">Problems</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel fxFlex="100">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="headline-4">Array</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="expansion-body">
+                            <mat-accordion multi="true">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Resources</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel class="mt-8">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Problems</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel fxFlex="100">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="headline-4">Greedy Algorithms</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="expansion-body">
+                            <mat-accordion multi="true">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Resources</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel class="mt-8">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Problems</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel fxFlex="100">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="headline-4">Searching Algorithms</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="expansion-body">
+                            <mat-accordion multi="true">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Resources</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel class="mt-8">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Problems</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel fxFlex="100">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="headline-4">Sorting Algorithms</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="expansion-body">
+                            <mat-accordion multi="true">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Resources</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel class="mt-8">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Problems</mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </mat-expansion-panel>
+                </div>
+            </mat-accordion>
+        </div>
+    </div>
 </div>

@@ -1,31 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { SyllabusService } from '../../services/syllabus.service';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-basic',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
+    selector: 'app-basic',
+    templateUrl: './basic.component.html',
+    styleUrls: ['./basic.component.scss'],
 })
 export class BasicComponent {
-  navigations = [
-    {
-      title: 'Basic',
-      url: '',
-      isActive: false,
-    },
-    {
-      title: 'Moderate',
-      url: '/syllabus/moderate',
-      isActive: false,
-    },
-    {
-      title: 'Advance',
-      url: '/syllabus/advance',
-      isActive: false,
-    },
-    {
-      title: 'Additional Resources',
-      url: '/syllabus/resources',
-      isActive: false,
-    },
-  ];
+    @ViewChild(MatAccordion) accordion!: MatAccordion;
+    complexityResources: any = [];
+    complexityProblems: any = [];
+    stlResources: any = [];
+    constructor(private syllabusService: SyllabusService) {
+        this.complexityResources = syllabusService.complexityResources;
+        this.complexityProblems = syllabusService.complexityProblems;
+        this.stlResources = syllabusService.stlResources;
+    }
 }
